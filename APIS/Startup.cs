@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using APIS.Controllers;
+using APIS.Models;
+using APIS.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.Options;
 
 namespace APIS
 {
@@ -46,6 +49,15 @@ namespace APIS
                     ClockSkew = TimeSpan.FromMinutes(5)
                 };
             });
+
+            //Database configuration
+            services.Configure<PizzaDatabaseSettings>(
+                Configuration.GetSection(nameof(PizzaDatabaseSettings)));
+
+            services.AddSingleton<IPizzaDatabaseSettings>(sp =>
+                sp.GetRequiredService<IOptions<PizzaDatabaseSettings>>().Value);
+
+            services.AddSingleton<PizzaService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,5 +67,6 @@ namespace APIS
             app.UseAuthentication();
             app.UseMvc();
         }
+        
     }
 }
