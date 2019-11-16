@@ -21,7 +21,7 @@ namespace APIS.Controllers
         public ActionResult<List<Pizza>> Get() =>
             _PizzaService.Get();
 
-        //http://localhost:<port>/api/Pizzas/{id }
+        //http://localhost:<port>/api/Pizzas/id 
         [HttpGet("{id:length(24)}", Name = "GetPizza")]
         public ActionResult<Pizza> Get(string id)
         {
@@ -35,6 +35,7 @@ namespace APIS.Controllers
             return Pizza;
         }
 
+        //Adjuntar JSON
         [HttpPost]
         public ActionResult<Pizza> Create(Pizza Pizza)
         {
@@ -43,6 +44,8 @@ namespace APIS.Controllers
             return CreatedAtRoute("GetPizza", new { id = Pizza.Id.ToString() }, Pizza);
         }
 
+        //http://localhost:<port>/api/Pizzas/id
+        //Adjuntar JSON
         [HttpPut("{id:length(24)}")]
         public IActionResult Update(string id, Pizza PizzaIn)
         {
@@ -55,9 +58,10 @@ namespace APIS.Controllers
 
             _PizzaService.Update(id, PizzaIn);
 
-            return NoContent();
+            return Ok();
         }
 
+        //http://localhost:<port>/api/Pizzas/id
         [HttpDelete("{id:length(24)}")]
         public IActionResult Delete(string id)
         {
