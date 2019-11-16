@@ -1,7 +1,13 @@
 Nota:
 
-Para acceder al JWT:
-localhost:<port>/api/Token/[Valor]/[Contraseña]
+Para generar el token en JWT:
+localhost:<port>/api/Token/[Usuario]/[Contraseña]
+  El usuario y contraseña deben ser iguales. 
+  Ejemplo: https://localhost:44345/api/token/Genesis/Genesis
+
+Para acceder a los valores del JWT:
+  Ejemplo: https://localhost:44345/api/values
+  Se mostrara un JSON.
 
 Para acceder al CRUD de pizzas:
 localhost:<port>/api/Pizzas/
