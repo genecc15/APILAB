@@ -7,7 +7,8 @@ localhost:<port>/api/Token/[Usuario]/[Contraseña]
 
 Para acceder a los valores del JWT:
   Ejemplo: https://localhost:44345/api/values
-  Se mostrara un JSON.
+  Aquí deberá ingresar el token en postman.
+  Se mostrará un JSON.
 
 Para acceder al CRUD de pizzas:
 localhost:<port>/api/Pizzas/
