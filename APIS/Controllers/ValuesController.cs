@@ -16,7 +16,13 @@ namespace APIS.Controllers
         [Authorize]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new string[] { " marcadores: " + "["+
+            "{" +
+            "Lattitude: 40.416875,"+
+            "Longitude: -3.703308,"+
+            "City: Madrid"+
+            "Description: Puerta del sol"+
+            "]"};
         }
 
         // GET api/values/5
